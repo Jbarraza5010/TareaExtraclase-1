@@ -144,19 +144,19 @@ int main () {
     string sortType;
     string file;
     int size;
-    cout << "Ingrese el nombre del archivo:";
+    cout << "Ingrese el tamaño del archivo:";
     cin >> file;
-    if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/1kb.txt")
+    if (file == "1kb.txt")
         size = 256;
-    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/4kb.txt")
+    else if (file == "4kb.txt")
         size = 1024;
-    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/8kb.txt")
+    else if (file == "8kb.txt")
         size = 2048;
-    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/12kb.txt")
+    else if (file == "12kb.txt")
         size = 3072;
-    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/24kb.txt")
+    else if (file == "24kb.txt")
         size = 6144;
-    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/36kb.txt")
+    else if (file == "32kb.txt")
         size = 9216;
     cout << "Ingrese el algoritmos de ordenamiento:";
     cin >> sortType;
