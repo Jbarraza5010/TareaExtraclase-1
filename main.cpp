@@ -140,20 +140,33 @@ public:
     }
 };
 
-int main ()
-{
+int main () {
     string sortType;
-    cout<<"Ingrese el algoritmos de ordenamiento:";
-    cin>>sortType;
-    if(sortType == "QS")
-    {
-        int array1[256];
-        int array2[256];
-        int n=0;
+    string file;
+    int size;
+    cout << "Ingrese el nombre del archivo:";
+    cin >> file;
+    if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/1kb.txt")
+        size = 256;
+    if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/4kb.txt")
+        size = 1024;
+    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/8kb.txt")
+        size = 2048;
+    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/12kb.txt")
+        size = 3072;
+    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/24kb.txt")
+        size = 6144;
+    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/36kb.txt")
+        size = 9216;
+    cout << "Ingrese el algoritmos de ordenamiento:";
+    cin >> sortType;
+    if (sortType == "IS") {
+        int array1[size];
+        int array2[size];
+        int n = 0;
         fstream datafile;
-        datafile.open("/home/tomeito/CLionProjects/TareaExtraclase-1/1kb.txt");
-        if (!datafile.is_open())
-        {
+        datafile.open(file);
+        if (!datafile.is_open()) {
             cout << "Failure to open." << endl;
             return 0;
         }
@@ -164,10 +177,33 @@ int main ()
         }
         datafile.close();
         //for (int i = 0; i < n; i++)
-            //cout << array1[i] << " ";
+        //cout << array1[i] << " ";
 
-        insertionSort(array1, 256);
-        printArray(array1, 256);
+        insertionSort(array1, size);
+        printArray(array1, size);
+    }
+
+    else if(sortType == "SS")
+    {
+        int array1[256];
+        int array2[256];
+        int n = 0;
+        fstream datafile;
+        datafile.open(file);
+        if (!datafile.is_open()) {
+            cout << "Failure to open." << endl;
+            return 0;
+        }
+        while (!datafile.eof()) {
+            datafile >> array1[n];
+            if (datafile.fail()) break;
+            n++;
+        }
+        datafile.close();
+        //for (int i = 0; i < n; i++)
+        //cout << array1[i] << " ";
+
+        selectionSort(array1, 256);
     }
 
 
