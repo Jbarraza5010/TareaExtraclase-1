@@ -148,7 +148,7 @@ int main () {
     cin >> file;
     if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/1kb.txt")
         size = 256;
-    if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/4kb.txt")
+    else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/4kb.txt")
         size = 1024;
     else if (file == "/home/tomeito/CLionProjects/TareaExtraclase-1/8kb.txt")
         size = 2048;
@@ -160,7 +160,39 @@ int main () {
         size = 9216;
     cout << "Ingrese el algoritmos de ordenamiento:";
     cin >> sortType;
-    if (sortType == "IS") {
+    if (sortType == "QS") {
+        int array1[size];
+        int array2[size];
+        int n = 0;
+        fstream datafile;
+        datafile.open(file);
+        if (!datafile.is_open()) {
+            cout << "Failure to open." << endl;
+            return 0;
+        }
+        while (!datafile.eof()) {
+            datafile >> array1[n];
+            if (datafile.fail()) break;
+            n++;
+        }
+        datafile.close();
+        //for (int i = 0; i < n; i++)
+        //cout << array1[i] << " ";
+
+        quickSort(array1, 0, size);
+        printArray(array1, size);
+
+        ofstream sortFile ("/home/tomeito/CLionProjects/TareaExtraclase-1/example.txt");
+        if (sortFile.is_open())
+        {
+            for(int count = 0; count < size; count ++){
+                sortFile << array1[count] << " " ;
+            }
+            sortFile.close();
+        }
+        else cout << "Unable to open file";
+    }
+    else if (sortType == "IS") {
         int array1[size];
         int array2[size];
         int n = 0;
@@ -181,12 +213,22 @@ int main () {
 
         insertionSort(array1, size);
         printArray(array1, size);
+
+        ofstream sortFile ("/home/tomeito/CLionProjects/TareaExtraclase-1/example.txt");
+        if (sortFile.is_open())
+        {
+            for(int count = 0; count < size; count ++){
+                sortFile << array1[count] << " " ;
+            }
+            sortFile.close();
+        }
+        else cout << "Unable to open file";
     }
 
     else if(sortType == "SS")
     {
-        int array1[256];
-        int array2[256];
+        int array1[size];
+        int array2[size];
         int n = 0;
         fstream datafile;
         datafile.open(file);
@@ -203,7 +245,52 @@ int main () {
         //for (int i = 0; i < n; i++)
         //cout << array1[i] << " ";
 
-        selectionSort(array1, 256);
+        selectionSort(array1, size);
+        printArray(array1, size);
+
+        ofstream sortFile ("/home/tomeito/CLionProjects/TareaExtraclase-1/example.txt");
+        if (sortFile.is_open())
+        {
+            for(int count = 0; count < size; count ++){
+                sortFile << array1[count] << " " ;
+            }
+            sortFile.close();
+        }
+        else cout << "Unable to open file";
+    }
+
+    else if(sortType == "PS")
+    {
+        int array1[size];
+        int array2[size];
+        int n = 0;
+        fstream datafile;
+        datafile.open(file);
+        if (!datafile.is_open()) {
+            cout << "Failure to open." << endl;
+            return 0;
+        }
+        while (!datafile.eof()) {
+            datafile >> array1[n];
+            if (datafile.fail()) break;
+            n++;
+        }
+        datafile.close();
+        //for (int i = 0; i < n; i++)
+        //cout << array1[i] << " ";
+
+        bogosort(array1, size);
+        printArray(array1, size);
+
+        ofstream sortFile ("/home/tomeito/CLionProjects/TareaExtraclase-1/example.txt");
+        if (sortFile.is_open())
+        {
+            for(int count = 0; count < size; count ++){
+                sortFile << array1[count] << " " ;
+            }
+            sortFile.close();
+        }
+        else cout << "Unable to open file";
     }
 
 
