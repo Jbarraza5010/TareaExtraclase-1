@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include  <string>
 
 using namespace std;
 
@@ -122,7 +124,52 @@ void bogosort(int a[], int n)
         shuffle(a, n);
 }
 
+void printArray(int a[], int n)
+{
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+class PagedArray {
+public:
+    PagedArray operator [] (PagedArray p){
+        PagedArray new_page;
+
+        return new_page;
+    }
+};
+
 int main ()
 {
+    string sortType;
+    cout<<"Ingrese el algoritmos de ordenamiento:";
+    cin>>sortType;
+    if(sortType == "QS")
+    {
+        int array1[256];
+        int array2[256];
+        int n=0;
+        fstream datafile;
+        datafile.open("/home/tomeito/CLionProjects/TareaExtraclase-1/1kb.txt");
+        if (!datafile.is_open())
+        {
+            cout << "Failure to open." << endl;
+            return 0;
+        }
+        while (!datafile.eof()) {
+            datafile >> array1[n];
+            if (datafile.fail()) break;
+            n++;
+        }
+        datafile.close();
+        //for (int i = 0; i < n; i++)
+            //cout << array1[i] << " ";
+
+        insertionSort(array1, 256);
+        printArray(array1, 256);
+    }
+
+
     return 0;
 }
